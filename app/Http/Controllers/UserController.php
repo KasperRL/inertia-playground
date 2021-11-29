@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Inertia\Inertia;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 
@@ -50,8 +51,25 @@ class UserController extends Controller
         return redirect('/users');
     }
 
-    public function edit($user)
+    public function edit($id)
     {
-        return "Editing $user";
+        return Inertia::render('Users/Edit', [
+            "user" => User::findOrFail($id)->only("name", "email", "id")
+        ]);
+    }
+
+    public function update($id)
+    {
+        $model = User::query()->where('id', $id)->first();
+        $attributes = Request::validate([
+            'name' => ['required'],
+            'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($model)],
+            'password' => ['nullable', 'min:6'],
+            'password_confirm' => ['nullable', 'same:password'],
+        ]);
+        
+        $model->update($attributes);
+
+        return redirect('/users');
     }
 }
