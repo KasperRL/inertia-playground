@@ -104,7 +104,7 @@ var _hoisted_5 = {
 
 var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
   "class": "text-2xl font-bold"
-}, "My App", -1
+}, "Playground", -1
 /* HOISTED */
 );
 
@@ -321,7 +321,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }).use(plugin).component("Link", _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_2__.Link).component("Head", _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_2__.Head).mount(el);
   },
   title: function title(currentTitle) {
-    return "My App - " + currentTitle;
+    return "Playground - " + currentTitle;
   }
 });
 _inertiajs_progress__WEBPACK_IMPORTED_MODULE_3__.InertiaProgress.init({
