@@ -13,13 +13,8 @@ Route::post('login', [LoginController::class, 'store']);
 Route::post('logout', [LoginController::class, 'destroy'])->middleware('auth');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', function () {
-        return Inertia::render('Home');
-    });
-
-    Route::get('/settings', function () {
-        return Inertia::render('Settings');
-    });
+    Route::inertia('/', 'Home');
+    Route::inertia('/settings', 'Settings');
 
     Route::get('/users', [UserController::class, 'index']);
     Route::get('/users/create', [UserController::class, 'create'])->can('create', 'App\Models\User');
