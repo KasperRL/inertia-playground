@@ -8,7 +8,7 @@
       <div class="flex items-center">
         <h1 class="text-2xl font-bold">Playground</h1>
         <p class="text-sm ml-4">
-          Welcome back, {{ username }}
+          Welcome back, {{ user.name }}
         </p>
       </div>
       <Nav />
@@ -28,8 +28,8 @@ export default {
   components: { Nav },
 
   computed: {
-    username() {
-      return this.$page.props.auth.user.username;
+    user() {
+      return this.$page.props.auth.user;
     },
   },
 };

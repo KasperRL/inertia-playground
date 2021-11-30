@@ -15,7 +15,7 @@
         </NavLink>
       </li>
       <li>
-        <NavLink href="/logout" method="post"
+        <NavLink href="/logout" as="button" method="POST"
           >Log out
         </NavLink>
       </li>

@@ -14,6 +14,7 @@ class UserController extends Controller
     {
         return Inertia::render('Users/Index', [
             'users' => User::query()
+                ->where('id', '!=', Auth::user()->id)
                 ->when(Request::input('search'), function ($query, $search) {
                     $query->where('name', 'like', "%{$search}%");
                 })
@@ -68,7 +69,7 @@ class UserController extends Controller
             'password' => ['nullable', 'min:6'],
             'repeated_password' => [request('password') === null ? 'nullable' : 'required', 'same:password'],
         ]);
-        
+
         $model->update($attributes);
 
         return redirect()->back();
