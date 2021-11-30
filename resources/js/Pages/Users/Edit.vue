@@ -26,9 +26,12 @@
             <input v-model="form.repeated_password" type="password" name="repeated_password" id="repeated_password" class="border border-gray-400 p-2 w-full">
             <div v-if="form.errors.repeated_password" v-text="form.errors.repeated_password" class="text-red-500 mt-1 text-xs"></div>
         </div>
+        <div class="mb-6" v-if="form.isDirty">
+            <p class="italic text-sm">There are unsaved changes.</p>
+        </div>
         <div class="mb-6">
             <button type="submit" class="bg-red-500 text-white rounded py-2 px-4 hover:bg-red-600" :disabled="form.processing">
-                Edit
+                Save
             </button>
         </div>
     </form>

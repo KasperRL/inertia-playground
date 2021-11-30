@@ -71,6 +71,6 @@ class UserController extends Controller
         
         $model->update($attributes);
 
-        return redirect('/users');
+        return redirect()->back();
     }
 }
