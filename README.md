@@ -4,7 +4,7 @@
 
 ## Installation
 
-1. Clone the repo
+1. Clone the repository
    ```sh
    git clone https://github.com/KasperRL/inertia-playground
    ```
@@ -13,15 +13,30 @@
    composer install
    ```
 3. Install NPM packages
-    ```sh
-    npm install
+   ```sh
+   npm install
+   ```
+4. Create a `database.sqlite` file in your `database` directory
+5. Rename `.env.example` to `.env`
+6. Edit your database connection in your `.env` file
+    <br>Replace
     ```
-4. Create your own .env file (using .env.example)
-5. Run migrations (creates 100 random users)
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=demo
+    DB_USERNAME=root
+    DB_PASSWORD=
+    ```
+    with
+    ```
+    DB_CONNECTION=sqlite
+    ```
+7. Run migrations (creates 100 random users)
     ```sh
     php artisan migrate:fresh --seed
     ```
-6. Start server
+7. Start server
     ```sh
     php artisan serve
     ```
