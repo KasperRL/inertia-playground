@@ -10,6 +10,35 @@
   <img src="https://v3.vuejs.org/logo.png" width="30">
 </span>
 
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/KasperRL/inertia-playground
+   ```
+2. Install Composer packages
+   ```sh
+   composer install
+   ```
+3. Install NPM packages
+    ```sh
+    npm install
+    ```
+4. Create your own .env file (using .env.example)
+5. Run migrations (creates 100 random users)
+    ```sh
+    php artisan migrate:fresh --seed
+    ```
+6. Start server
+    ```sh
+    php artisan serve
+    ```
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License.
+
 ## Reach me
 
 <span>
@@ -22,5 +51,3 @@
 </span>
 
 #### Or kasper.ligthart@icloud.com
-
-
