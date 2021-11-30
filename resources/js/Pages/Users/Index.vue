@@ -43,6 +43,7 @@
                 <td
                   v-if="user.can.edit"
                   class="
+                    space-x-8
                     px-6
                     py-4
                     whitespace-nowrap
@@ -54,6 +55,12 @@
                     :href="`/users/${user.id}/edit`"
                     class="text-indigo-600 hover:text-indigo-900"
                     >Edit</Link
+                  >
+                  <Link
+                    :href="`/users/${user.id}/delete`"
+                    method="DELETE" 
+                    class="text-red-500 hover:text-red-700"
+                    >Delete</Link
                   >
                 </td>
               </tr>
