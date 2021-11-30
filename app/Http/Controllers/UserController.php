@@ -63,10 +63,10 @@ class UserController extends Controller
     {
         $model = User::query()->where('id', $id)->first();
         $attributes = Request::validate([
-            'name' => ['required'],
-            'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($model)],
+            'name' => ['nullable'],
+            'email' => ['nullable', 'email', Rule::unique('users', 'email')->ignore($model)],
             'password' => ['nullable', 'min:6'],
-            'repeated_password' => ['nullable', 'same:password'],
+            'repeated_password' => [request('password') === null ? 'nullable' : 'required', 'same:password'],
         ]);
         
         $model->update($attributes);
