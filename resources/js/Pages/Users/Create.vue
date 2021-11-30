@@ -3,7 +3,10 @@
         <title>Create User</title>
     </Head>
 
-    <h1 class="text-3xl font-bold">Create User</h1>
+    <div>
+        <h1 class="text-3xl font-bold">Create User</h1>
+        <a href="/users" class="text-sm text-blue-500 hover:underline">Go back</a>
+    </div>
 
     <form @submit.prevent="submit" class="max-w-md mx-auto mt-8">
         <div class="mb-6">

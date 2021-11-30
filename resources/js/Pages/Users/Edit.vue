@@ -3,7 +3,7 @@
         <title>Edit User</title>
     </Head>
 
-    <div class="">
+    <div>
         <h1 class="text-3xl font-bold">Edit User</h1>
         <a href="/users" class="text-sm text-blue-500 hover:underline">Go back</a>
     </div>
