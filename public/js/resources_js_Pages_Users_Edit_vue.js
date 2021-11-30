@@ -25,7 +25,7 @@ __webpack_require__.r(__webpack_exports__);
       name: props.user.name,
       email: props.user.email,
       password: '',
-      password_confirm: ''
+      repeated_password: ''
     });
 
     var submit = function submit() {
@@ -112,9 +112,9 @@ var _hoisted_12 = {
 };
 
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "password_confirm",
+  "for": "repeated_password",
   "class": "block mb-2 uppercase font-bold text-xs text-gray-700"
-}, "Confirm Password", -1
+}, "Repeat Password", -1
 /* HOISTED */
 );
 
@@ -190,17 +190,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , _hoisted_11)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-      return $setup.form.password_confirm = $event;
+      return $setup.form.repeated_password = $event;
     }),
     type: "password",
-    name: "password_confirm",
-    id: "password_confirm",
+    name: "repeated_password",
+    id: "repeated_password",
     "class": "border border-gray-400 p-2 w-full"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.password_confirm]]), $setup.form.errors.password_confirm ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.repeated_password]]), $setup.form.errors.repeated_password ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     key: 0,
-    textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.password_confirm),
+    textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.repeated_password),
     "class": "text-red-500 mt-1 text-xs"
   }, null, 8
   /* PROPS */

@@ -42,8 +42,9 @@ class UserController extends Controller
     {
         $attributes = Request::validate([
             'name' => ['required'],
-            'email' => ['required', 'email'],
-            'password' => ['required']
+            'email' => ['required', 'email', Rule::unique('users', 'email')],
+            'password' => ['required', 'min:6'],
+            'repeated_password' => ['required', 'same:password'],
         ]);
 
         User::create($attributes);
@@ -65,7 +66,7 @@ class UserController extends Controller
             'name' => ['required'],
             'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($model)],
             'password' => ['nullable', 'min:6'],
-            'password_confirm' => ['nullable', 'same:password'],
+            'repeated_password' => ['nullable', 'same:password'],
         ]);
         
         $model->update($attributes);
