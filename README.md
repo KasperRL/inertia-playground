@@ -34,6 +34,10 @@
   <img src="https://v3.vuejs.org/logo.png" width="25">
 </span>
 
+## License
+
+Distributed under the MIT License.
+
 ## Reach me
 
 <span>
@@ -46,7 +50,3 @@
 </span>
 
 #### Or kasper.ligthart@icloud.com
-
-## License
-
-Distributed under the MIT License.
