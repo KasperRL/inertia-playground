@@ -22,15 +22,22 @@ class SettingsController extends Controller
 
     public function update()
     {
-        $model = User::query()->where('id', request()->userId)->first();
+        $user = User::findOrFail(request('userId'));
         $attributes = request()->validate([
             'name' => ['nullable'],
-            'email' => ['nullable', 'email', Rule::unique('users', 'email')->ignore($model)],
-            'password' => ['nullable', 'min:6'],
-            'repeated_password' => [request('password') === null ? 'nullable' : 'required', 'same:password'],
+            'email' => ['nullable', 'email', Rule::unique('users', 'email')->ignore($user)],
         ]);
 
-        $model->update($attributes);
+        if (request('password') !== null) {
+            $password = request()->validate([
+                'password' => ['nullable', 'min:6'],
+                'repeated_password' => ['required', 'same:password'],
+            ]);
+
+            $attributes['password'] = $password['password'];
+        }
+
+        $user->update($attributes);
 
         return redirect()->back();
     }
