@@ -19,9 +19,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/settings', [SettingsController::class, 'index']);
     
     Route::get('/users', [UserController::class, 'index']);
-    Route::get('/users/create', [UserController::class, 'create'])->can('create', 'App\Models\User');
+    Route::get('/users/create', [UserController::class, 'create'])->can('create', 'App\Models\User')->middleware('can:add users');
     Route::post('/users', [UserController::class, 'store']);
-    Route::get('/users/{user:id}/edit', [UserController::class, 'edit']);
-    Route::post('/users/{user:id}/edit', [UserController::class, 'update']);
-    Route::delete('/users/{user:id}/delete', [UserController::class, 'destroy']);
+    Route::middleware('can:edit users')->group(function () {
+        Route::get('/users/{user:id}/edit', [UserController::class, 'edit']);
+        Route::post('/users/{user:id}/edit', [UserController::class, 'update']);
+    });
+    Route::delete('/users/{user:id}/delete', [UserController::class, 'destroy'])->middleware('can:delete users');
 });

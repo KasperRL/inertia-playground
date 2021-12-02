@@ -11,11 +11,16 @@ class UserPolicy
     
     public function create(User $user)
     {
-        return $user->email === "admin@x.y";
+        return $user->hasPermissionTo('add users');
     }
 
-    public function edit(User $currentUser, User $user)
+    public function edit(User $user)
     {
-        return (bool) mt_rand(0, 1);
+        return $user->hasPermissionTo('edit users');
+    }
+
+    public function delete(User $user)
+    {
+        return $user->hasPermissionTo('delete users');
     }
 }

@@ -7,7 +7,7 @@
     <div>
       <h1 class="text-3xl font-bold">Users</h1>
       <Link
-        v-if="can.createUser"
+        v-if="can.createUsers"
         href="/users/create"
         class="text-blue-500 text-sm"
         >New User</Link
@@ -42,8 +42,8 @@
                   </div>
                 </td>
                 <td class="space-x-8 px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <Link :href="`/users/${user.id}/edit`" class="text-indigo-600 hover:text-indigo-900 hover:underline">Edit</Link>
-                  <Link :href="`/users/${user.id}/delete`" as="button" method="DELETE" class="text-red-500 hover:text-red-700 hover:underline">Delete</Link>
+                  <Link v-if="can.editUsers" :href="`/users/${user.id}/edit`" class="text-indigo-600 hover:text-indigo-900 hover:underline">Edit</Link>
+                  <Link v-if="can.deleteUsers" :href="`/users/${user.id}/delete`" as="button" method="DELETE" class="text-red-500 hover:text-red-700 hover:underline">Delete</Link>
                 </td>
               </tr>
             </tbody>
