@@ -11,7 +11,7 @@ class UserPolicy
     
     public function create(User $user)
     {
-        return $user->email === "admin";
+        return $user->email === "admin@x.y";
     }
 
     public function edit(User $currentUser, User $user)
