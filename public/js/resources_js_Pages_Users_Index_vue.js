@@ -185,7 +185,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* TEXT */
     )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
       href: "/users/".concat(user.id, "/edit"),
-      "class": "text-indigo-600 hover:text-indigo-900"
+      "class": "text-indigo-600 hover:text-indigo-900 hover:underline"
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
         return [_hoisted_16];
@@ -199,7 +199,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       href: "/users/".concat(user.id, "/delete"),
       as: "button",
       method: "DELETE",
-      "class": "text-red-500 hover:text-red-700"
+      "class": "text-red-500 hover:text-red-700 hover:underline"
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
         return [_hoisted_17];

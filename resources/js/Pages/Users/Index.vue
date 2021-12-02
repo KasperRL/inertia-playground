@@ -42,8 +42,8 @@
                   </div>
                 </td>
                 <td class="space-x-8 px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <Link :href="`/users/${user.id}/edit`" class="text-indigo-600 hover:text-indigo-900">Edit</Link>
-                  <Link :href="`/users/${user.id}/delete`" as="button" method="DELETE" class="text-red-500 hover:text-red-700">Delete</Link>
+                  <Link :href="`/users/${user.id}/edit`" class="text-indigo-600 hover:text-indigo-900 hover:underline">Edit</Link>
+                  <Link :href="`/users/${user.id}/delete`" as="button" method="DELETE" class="text-red-500 hover:text-red-700 hover:underline">Delete</Link>
                 </td>
               </tr>
             </tbody>
