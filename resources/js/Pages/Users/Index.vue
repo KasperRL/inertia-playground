@@ -35,8 +35,8 @@
                       <div class="text-sm font-medium text-gray-900">
                         {{ user.name }}
                       </div>
-                      <div class="text-xs text-gray-500">
-                        {{ user.email }}
+                      <div class="text-xs text-blue-400 hover:underline">
+                        <a :href="'mailto:' + user.email">{{ user.email }}</a>
                       </div>
                     </div>
                   </div>

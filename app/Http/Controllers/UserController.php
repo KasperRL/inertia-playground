@@ -25,6 +25,7 @@ class UserController extends Controller
                     'name' => $user->name,
                     'email' => $user->email,
                     'id' => $user->id,
+                    'role' => $user->getRoleNames()->first() ?? "Guest",
                 ]),
             'filters' => Request::only(['search']),
             'can' => [
