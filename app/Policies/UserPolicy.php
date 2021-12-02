@@ -23,4 +23,9 @@ class UserPolicy
     {
         return $user->hasPermissionTo('delete users');
     }
+
+    public function assignRoles(User $user)
+    {
+        return $user->hasPermissionTo('assign roles');
+    }
 }

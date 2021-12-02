@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Inertia\Inertia;
 use Illuminate\Validation\Rule;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 
@@ -56,21 +57,48 @@ class UserController extends Controller
     public function edit($id)
     {
         return Inertia::render('Users/Edit', [
-            "user" => User::findOrFail($id)->only("name", "email", "id")
+            "user" => [
+                'data' => User::findOrFail($id)->only("name", "email", "id"),
+                'role' => User::findOrFail($id)->getRoleNames()->first() ?? "Guest",
+            ],
+            "roles" => Role::all()->pluck('name'),
+            "can" => [
+                'assignRoles' => Auth::user()->can('assignRoles', User::class),
+            ]
         ]);
     }
 
     public function update($id)
     {
-        $model = User::query()->where('id', $id)->first();
+        $user = User::findOrFail($id);
+        $userRoles = $user->getRoleNames() ?? null;
+
         $attributes = request()->validate([
             'name' => ['nullable'],
-            'email' => ['nullable', 'email', Rule::unique('users', 'email')->ignore($model)],
-            'password' => ['nullable', 'min:6'],
-            'repeated_password' => [request('password') === null ? 'nullable' : 'required', 'same:password'],
+            'email' => ['nullable', 'email', Rule::unique('users', 'email')->ignore($user)],
         ]);
 
-        $model->update($attributes);
+        if (request('password') !== null) {
+            $password = request()->validate([
+                'password' => ['nullable', 'min:6'],
+                'repeated_password' => ['required', 'same:password'],
+            ]);
+
+            $attributes['password'] = $password['password'];
+        }
+
+        $user->update($attributes);
+
+        if ($userRoles !== null) {
+            if (request('role') != $userRoles->first()) {
+                foreach ($userRoles as $role) {
+                    $user->removeRole($role);
+                }
+                if (request('role') != "Guest") {
+                    $user->assignRole(request('role'));
+                }
+            }
+        }
 
         return redirect()->back();
     }

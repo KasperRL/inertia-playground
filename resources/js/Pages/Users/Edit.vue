@@ -29,6 +29,13 @@
             <input v-model="form.repeated_password" type="password" name="repeated_password" id="repeated_password" class="border border-gray-400 p-2 w-full">
             <div v-if="form.errors.repeated_password" v-text="form.errors.repeated_password" class="text-red-500 mt-1 text-xs"></div>
         </div>
+        <div v-if="can.assignRoles" class="mb-6">
+            <label for="roles" class="block mb-2 uppercase font-bold text-xs text-gray-700">Role</label>
+            <select v-model="form.role" id="roles" name="roles" class="border border-gray-400 p-2 w-full">
+                <option>Guest</option>
+                <option v-for="role in roles" :key="role">{{ role }}</option>
+            </select>
+        </div>
         <div v-if="form.isDirty" class="mb-6">
             <p class="italic text-sm">There are unsaved changes.</p>
         </div>
@@ -45,16 +52,19 @@
 
     let props = defineProps({
         user: Object,
-    })
+        roles: Object,
+        can: Object,
+    });
 
     let form = useForm({
-        name: props.user.name,
-        email: props.user.email,
+        name: props.user.data.name,
+        email: props.user.data.email,
         password: '',
         repeated_password: '',
+        role: props.user.role,
     });
 
     let submit = () => {
-        form.post('/users/' + props.user.id +  '/edit');
+        form.post('/users/' + props.user.data.id +  '/edit');
     };
 </script>

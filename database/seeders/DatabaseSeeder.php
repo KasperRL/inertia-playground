@@ -24,15 +24,25 @@ class DatabaseSeeder extends Seeder
             'password' => 'admin'
         ]);
 
+        $temp = User::create([
+            'name' => 'temp',
+            'email' => 'temp@temp.nl',
+            'password' => 'temp123',
+        ]);
+
         $addUsers = Permission::create(['name' => 'add users']);
         $editUsers = Permission::create(['name' => 'edit users']);
-        $deleteUsers = Permission::create(['name' => 'delete users']);
+        Permission::create(['name' => 'delete users']);
+        Permission::create(['name' => 'assign roles']);
 
         $levelOne = Role::create(['name' => 'level-one-access']);
         $levelTwo = Role::create(['name' => 'level-two-access']);
         Role::create(['name' => 'super-admin']);
 
-        $addUsers->syncRoles([$levelOne, $levelTwo]);
-        $deleteUsers->syncRoles([$levelTwo]);
+        $admin->assignRole('super-admin');
+        $temp->assignRole('level-one-access');
+        
+        $editUsers->syncRoles([$levelOne, $levelTwo]);
+        $addUsers->syncRoles([$levelTwo]);
     }
 }
