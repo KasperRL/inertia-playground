@@ -17,8 +17,11 @@
    npm install
    ```
 4. Create a `database.sqlite` file in your `database` directory
-5. Rename `.env.example` to `.env`
-6. Edit your database connection in your `.env` file
+   ```sh
+   touch database/database.sqlite
+   ```
+6. Rename `.env.example` to `.env`
+7. Edit your database connection in your `.env` file
     <br>Replace
     ```
     DB_CONNECTION=mysql
