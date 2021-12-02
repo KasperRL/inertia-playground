@@ -99,7 +99,7 @@ var _hoisted_4 = {
   "class": "flex justify-between"
 };
 var _hoisted_5 = {
-  "class": "text-2xl font-bold"
+  "class": "text-2xl font-bold uppercase"
 };
 var _hoisted_6 = {
   "class": "p-6"

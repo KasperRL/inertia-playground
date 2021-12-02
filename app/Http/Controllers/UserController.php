@@ -22,6 +22,7 @@ class UserController extends Controller
                 ->withQueryString()
                 ->through(fn ($user) => [
                     'name' => $user->name,
+                    'email' => $user->email,
                     'id' => $user->id,
                     'can' => [
                         'edit' => Auth::user()->can('edit', $user)

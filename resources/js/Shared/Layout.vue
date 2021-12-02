@@ -5,7 +5,7 @@
   </Head>
   <section class="p-6 bg-gray-200">
     <header class="flex justify-between">
-        <h1 class="text-2xl font-bold">{{ user.name }}</h1>
+        <h1 class="text-2xl font-bold uppercase">{{ user.name }}</h1>
       <Nav />
     </header>
   </section>

@@ -35,6 +35,9 @@
                       <div class="text-sm font-medium text-gray-900">
                         {{ user.name }}
                       </div>
+                      <div class="text-xs text-gray-500">
+                        {{ user.email }}
+                      </div>
                     </div>
                   </div>
                 </td>
