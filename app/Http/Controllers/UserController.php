@@ -7,7 +7,6 @@ use Inertia\Inertia;
 use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Request;
 
 class UserController extends Controller
 {
