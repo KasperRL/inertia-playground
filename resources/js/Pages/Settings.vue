@@ -29,6 +29,7 @@
     <div v-if="form.isDirty" class="mb-6">
       <p class="italic text-sm">There are unsaved changes.</p>
     </div>
+    <input v-model="form.userId" type="hidden" id="userId" name="userId">
     <div class="mb-6">
       <button type="submit" class="bg-red-500 text-white rounded py-2 px-4 hover:bg-red-600" :disabled="form.processing">
           Save
@@ -50,9 +51,10 @@
     email: props.user.email,
     password: '',
     repeated_password: '',
+    userId: props.user.id,
   });
 
   let submit = () => {
-    form.post('/users/' + props.user.id +  '/edit');
+    form.post('/settings');
   };
 </script>

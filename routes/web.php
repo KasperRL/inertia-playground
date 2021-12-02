@@ -17,6 +17,7 @@ Route::middleware('auth')->group(function () {
     Route::inertia('/', 'Home');
     
     Route::get('/settings', [SettingsController::class, 'index']);
+    Route::post('/settings', [SettingsController::class, 'update']);
     
     Route::get('/users', [UserController::class, 'index']);
     Route::get('/users/create', [UserController::class, 'create'])->can('create', 'App\Models\User')->middleware('can:add users');

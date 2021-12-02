@@ -63,7 +63,7 @@ class UserController extends Controller
     public function update($id)
     {
         $model = User::query()->where('id', $id)->first();
-        $attributes = Request::validate([
+        $attributes = request()->validate([
             'name' => ['nullable'],
             'email' => ['nullable', 'email', Rule::unique('users', 'email')->ignore($model)],
             'password' => ['nullable', 'min:6'],

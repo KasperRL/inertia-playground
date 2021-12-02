@@ -32,8 +32,6 @@ class DatabaseSeeder extends Seeder
         $levelTwo = Role::create(['name' => 'level-two-access']);
         Role::create(['name' => 'super-admin']);
 
-        $admin->assignRole('super-admin');
-
         $addUsers->syncRoles([$levelOne, $levelTwo]);
         $deleteUsers->syncRoles([$levelTwo]);
     }
