@@ -9,7 +9,7 @@
       <Link
         v-if="can.createUsers"
         href="/users/create"
-        class="text-blue-500 text-sm"
+        class="text-blue-400 text-sm hover:underline"
         >New User</Link
       >
     </div>

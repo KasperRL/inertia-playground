@@ -16,7 +16,8 @@ class UserController extends Controller
         return Inertia::render('Users/Index', [
             'users' => User::query()
                 ->where('id', '!=', Auth::user()->id)
-                ->when(Request::input('search'), function ($query, $search) {
+                ->orderBy('name')
+                ->when(request('search'), function ($query, $search) {
                     $query->where('name', 'like', "%{$search}%");
                 })
                 ->paginate(10)
@@ -27,7 +28,7 @@ class UserController extends Controller
                     'id' => $user->id,
                     'role' => $user->getRoleNames()->first() ?? "Guest",
                 ]),
-            'filters' => Request::only(['search']),
+            'filters' => request()->only(['search']),
             'can' => [
                 'createUsers' => Auth::user()->can('create', User::class),
                 'editUsers' => Auth::user()->can('edit', User::class),
@@ -43,7 +44,7 @@ class UserController extends Controller
 
     public function store()
     {
-        $attributes = Request::validate([
+        $attributes = request()->validate([
             'name' => ['required'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => ['required', 'min:6'],
