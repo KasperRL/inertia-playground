@@ -36,9 +36,14 @@
     ```sh
     php artisan migrate:fresh --seed
     ```
-7. Start server
+8. Start server
     ```sh
     php artisan serve
+    ```
+9. Login with
+    ```sh
+    email: admin@x.y
+    password: admin
     ```
 
 ## Build with
